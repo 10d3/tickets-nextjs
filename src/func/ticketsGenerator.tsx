@@ -1,5 +1,5 @@
  // Importez votre fonction de génération de QR code
- import { prisma } from '@/db/prisma';
+import { prisma } from '@/db/prisma';
 import { generateQRCode } from './qrCodeGen';
 
 

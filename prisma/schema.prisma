@@ -42,46 +42,48 @@ model Session {
 }
 
 model User {
-  id            String   @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
-  email         String?  @unique
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
-  tickets       Ticket[] @relation("UserTickets")
-  events        Event[]  @relation("UserEvents")
+  tickets       Ticket[]  @relation("UserTickets")
+  events        Event[]   @relation("UserEvents")
 }
 
 model Event {
-  id          String   @id @default(cuid())
-  name        String   @unique
-  description String
-  date        DateTime
-  location    String
-  price       Float    @default(0)
-  image       String?
-  capacity    Int
-  tickets     Ticket[]
-  createdBy   User     @relation("UserEvents", fields: [createdById], references: [id])
-  createdById String
+  id                     String   @id @default(cuid())
+  name                   String   @unique
+  slug                   String   @unique
+  description            String
+  date                   DateTime
+  location               String
+  image                  String?
+  vipTicketPrice         Float? // Prix du billet VIP
+  standardTicketPrice    Float // Prix du billet standard
+  vipTicketCapacity      Int? // Capacité du billet VIP
+  standardTicketCapacity Int // Capacité du billet stand
+  tickets                Ticket[]
+  createdBy              User     @relation("UserEvents", fields: [createdById], references: [id])
+  createdById            String
+  approved               Boolean @default(false)
 }
 
 model Ticket {
-  id        String   @id @default(cuid())
-  eventId   String
-  userId    String?
-  price     Float
-  status    String   @default("available")
+  id         String   @id @default(cuid())
+  eventId    String
+  userId     String?
+  price      Float
+  status     String   @default("available")
   qrCodePath String?
-  createdAt DateTime @default(now())
-  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade) // Définition de l'argument onDelete ici
-  buyer     User?    @relation("UserTickets", fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+  event      Event    @relation(fields: [eventId], references: [id], onDelete: Cascade) // Définition de l'argument onDelete ici
+  buyer      User?    @relation("UserTickets", fields: [userId], references: [id])
 }
-
-
 
 model VerificationToken {
   identifier String
@@ -91,8 +93,6 @@ model VerificationToken {
   @@unique([identifier, token])
   @@map("verificationtokens")
 }
-
-
 
 // J'ai suivi la documentation du nouveau [Prisma Adapter](https://authjs.dev/reference/adapter/prisma).
 

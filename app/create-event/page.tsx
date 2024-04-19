@@ -3,7 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Typography } from '@/components/ui/typography';
 import { getAuthSession } from '@/lib/auth';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
+import NewEventForm from './new/NewEventForm';
 
 export default async function CreateEvent() {
 
@@ -25,7 +27,7 @@ export default async function CreateEvent() {
                     <Typography as='h1' className=' text-4xl md:text-6xl '>{intro}</Typography>
                     <Typography as='h3' className=' text-2xl md:text-4xl text-justify'>{intro2}</Typography>
                     <Typography as='p' className=' text-xl md:text-2xl text-justify'>{intro3}</Typography>
-                    <Button size='lg' className=' self-start md:self-center' variant='default'>Create Event</Button>
+                    <Button size='lg' className=' self-start md:self-center' variant='default'><Typography href='/create-event/new' as={Link}>Create Event</Typography></Button>
                 </div>
                 <div>
                     <Image src='/heroimg.jpg' width={0} height={0} sizes='100%' className='w-full h-full rounded-lg' alt='create your event' />

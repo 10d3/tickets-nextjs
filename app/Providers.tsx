@@ -1,6 +1,7 @@
 'use client';
 
 import { ToastProvider } from '@/components/ui/toast';
+import * as Tooltip from '@radix-ui/react-tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'next-themes';
@@ -14,9 +15,11 @@ export const Providers = ({ children }: PropsWithChildren) => {
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <SessionProvider>
           <ToastProvider>
-            <QueryClientProvider client={queryClient}>
-              {children}
-            </QueryClientProvider>
+            <Tooltip.Provider>
+              <QueryClientProvider client={queryClient}>
+                {children}
+              </QueryClientProvider>
+            </Tooltip.Provider>
           </ToastProvider>
         </SessionProvider>
       </ThemeProvider>

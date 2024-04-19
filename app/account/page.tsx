@@ -10,7 +10,7 @@ import { prisma } from '@/db/prisma';
 
 export default async function AccountPage() {
     const session = await getAuthSession();
-    const user= session?.user;
+    const user = session?.user;
 
     const events = await prisma.event.findMany({
         where: {
@@ -19,8 +19,8 @@ export default async function AccountPage() {
     })
 
     const tickets = await prisma.ticket.findMany({
-        where:{
-            userId : user?.id
+        where: {
+            userId: user?.id
         }
     })
 
@@ -29,8 +29,7 @@ export default async function AccountPage() {
         throw new Error("no session found");
     }
     return (
-        <div>
-            <Card className='m-auto max-w-lg mt-4 ml-7 mr-7'>
+        <Card className='mx-auto max-w-lg mt-20 '>
             <CardHeader className='flex flex-row gap-4'>
                 <Avatar>
                     <AvatarFallback>
@@ -44,15 +43,14 @@ export default async function AccountPage() {
                 </div>
             </CardHeader>
             <CardContent className='flex flex-col gap-2'>
-                <Link href='/account/setting' className={buttonVariants({variant:"outline", size:"lg"})}>Setting</Link>
-                <Link href='/admin' className={buttonVariants({variant:"outline", size:'lg'})}>Admin</Link>
-                { events.length != 0 &&  <Link href='/dashboard' className={buttonVariants({variant:"outline", size:'lg'})}>DashBoard</Link>}
-                { tickets.length != 0 && <Link href='/tickets' className={buttonVariants({variant:"outline", size:'lg'})}>Mes Tickets</Link>}
+                <Link href='/account/setting' className={buttonVariants({ variant: "outline", size: "lg" })}>Setting</Link>
+                <Link href='/admin' className={buttonVariants({ variant: "outline", size: 'lg' })}>Admin</Link>
+                {events.length != 0 && <Link href='/dashboard' className={buttonVariants({ variant: "outline", size: 'lg' })}>DashBoard</Link>}
+                {tickets.length != 0 && <Link href='/tickets' className={buttonVariants({ variant: "outline", size: 'lg' })}>Mes Tickets</Link>}
             </CardContent>
             <CardFooter className='flex flex-row-reverse'>
-                <LogoutButton/>
+                <LogoutButton />
             </CardFooter>
         </Card>
-        </div>
     )
 }

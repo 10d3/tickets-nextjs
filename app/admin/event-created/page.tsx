@@ -1,16 +1,19 @@
 import { Layout, LayoutContent, LayoutHeader, LayoutTitle } from '@/components/layout/layout';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Typography } from '@/components/ui/typography';
 import { prisma } from '@/db/prisma';
 import { getRequireAuthSession } from '@/lib/auth'
 import { AvatarImage } from '@radix-ui/react-avatar';
+import { FilePenLine, Pencil, Trash2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default async function AdminEvent() {
+
 
     const session = await getRequireAuthSession();
 
@@ -30,17 +33,20 @@ export default async function AdminEvent() {
                 <Card>
                     <CardContent className='mt-4'>
                         <Table>
-                            <TableHeader>
-                                <TableHead>
-                                    Image
-                                </TableHead>
-                                <TableHead>
-                                    Name
-                                </TableHead>
-                            </TableHeader>
+                            {/* <TableHeader>
+                                <div>
+                                    <TableHead>
+                                        Image
+                                    </TableHead>
+                                    <TableHead>
+                                        Name
+                                    </TableHead>
+                                    <TableHead>Actions</TableHead>
+                                </div>
+                            </TableHeader> */}
                             <TableBody>
                                 {events.map(event => (
-                                    <TableRow key={event.id}>
+                                    <TableRow className='flex flex-row justify-between items-center' key={event.id}>
                                         <TableCell>
                                             <Avatar className='rounded'>
                                                 <AvatarFallback>
@@ -51,6 +57,9 @@ export default async function AdminEvent() {
                                         </TableCell>
                                         <TableCell>
                                             <Typography as={Link} variant='large' href={`/admin/event-created/${event.id}`}>{event.name}</Typography>
+                                        </TableCell>
+                                        <TableCell className='flex flex-row gap-4'>
+                                            <Button size='sm' variant='destructive'><Trash2 size={15} /></Button>
                                         </TableCell>
                                     </TableRow>
                                 ))}

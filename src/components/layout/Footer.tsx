@@ -21,9 +21,9 @@ export const Footer = () => {
 
 
     return (
-        <footer className="bg-background z-40 w-full border-b mt-24 mb-10">
+        <footer className="bg-background z-40 w-full border-b pb-2">
             <Separator/>
-            <div className=" mt-4 container flex h-16 items-center flex-col md;flex-row justify-between space-x-4 sm:justify-between sm:space-x-0">
+            <div className=" mt-4 md:mx-24 flex h-auto items-center flex-col md:flex-row justify-between sm:justify-between gap-4">
                 <div>
                     <Typography variant="h3" as={Link} href="/">
                         {SiteConfig.title}

@@ -58,7 +58,7 @@ export function Header() {
                             <div className='flex flex-col h-[85%] w-full justify-between'>
                                 <div className='flex self-end'>
                                     <DrawerTitle>
-                                        <DrawerClose>
+                                        <DrawerClose asChild>
                                             <X />
                                         </DrawerClose>
                                     </DrawerTitle>
@@ -66,7 +66,7 @@ export function Header() {
                                 <div className='flex flex-col items-center gap-4'>
                                     {links.map((link, i) => {
                                         return (
-                                            <DrawerClose key={i}>
+                                            <DrawerClose key={i} asChild>
                                                 <Typography className='' as={Link} key={i} href={link.href}>{link.name}</Typography>
                                             </DrawerClose>
                                         );
