@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { ThemeToggle } from '../theme/Toggletheme';
 import { Typography } from '../ui/typography';
 import Image from 'next/image';
-import { AuthButton } from '@/features/auth/AuthButton';
 import { Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerTitle, DrawerTrigger } from '../ui/drawer';
+import { AuthButton } from '@/features/auth/authButton';
 
 export function Header() {
 
