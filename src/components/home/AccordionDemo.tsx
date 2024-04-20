@@ -39,7 +39,7 @@ export default function AccordionDemo() {
                 </AccordionTrigger>
                 <AccordionContent>
                     <Typography as='p'>
-                        Yes. It's animated by default, but you can disable it if you prefer.
+                        Yes. It&apos;s animated by default, but you can disable it if you prefer.
                     </Typography>
                 </AccordionContent>
             </AccordionItem>
