@@ -9,7 +9,14 @@ import { Input } from "@/components/ui/input"
 import LoadingButton from "@/components/ui/LoadingButton"
 import { createEventPosting } from "./actions"
 
-export default function NewEventForm(userId) {
+
+type MyObject = {
+    userId: string;
+    // Add more properties as needed
+  };
+
+
+export default function NewEventForm(userId:MyObject) {
 
     const user1 = userId.userId
 

@@ -23,11 +23,11 @@ export default function Hero() {
         <Typography className=" text-4xl md:text-5xl" as="h1">{intro.toUpperCase()}</Typography>
         <Typography className=" text-4xl md:text-5xl" as="h1">{intro2.toUpperCase()}</Typography>
       </div>
-      <div className=" hidden md:flex flex-col md:flex-row gap-4">
+      <div className=" hidden flex-col md:flex-row gap-4">
         <Input className="w-full" type="search" placeholder="Search Event, Location" />
         <Button type="submit">Search</Button>
       </div>
-      <Typography as="h3" className=" hidden md:flex text-xl">FEATURED EVENTS</Typography>
+      <Typography as="h3" className=" hidden text-xl">FEATURED EVENTS</Typography>
     </section>
   )
 }

@@ -9,7 +9,20 @@ import Link from 'next/link';
 import heroimg from "../../../public/heroimg.jpg"
 import { convertUnixTimestamp } from "../../func/formatDateFrench"
 
-export default function CardEvent({ id, name, description, date, location, standardTicketPrice, image, standardTicketCapacity, createdById }: { id: string, name: string, description: string, date: Date, location: string, standardTicketPrice: number, image: string, standardTicketCapacity: number, createdById: string }) {
+interface CardEventProps {
+    id: string;
+    slug: string;
+    name: string;
+    description: string;
+    date: Date;
+    location: string;
+    standardTicketPrice: number;
+    image: string | null; // Allow null for image
+    standardTicketCapacity: number;
+    createdById: string;
+  }
+
+export default function CardEvent({ id, slug, name, description, date, location, standardTicketPrice, image, standardTicketCapacity, createdById }: CardEventProps) {
 
     const { dateFormat, time } = convertUnixTimestamp(date)
 
@@ -23,15 +36,15 @@ export default function CardEvent({ id, name, description, date, location, stand
 
     const time12HourFormat = convertTo12HourFormat(time);
 
-    const myLoader = ({ src, width }) => {
-        return `${src}?w=${width}`;
-    }
+    // const myLoader = ({ src, width }) => {
+    //     return `${src}?w=${width}`;
+    // }
 
 
     return (
         <Card className='w-[350px] h-[450px]'>
             <CardHeader>
-                <Image className='w-full h-[230px]' loader={myLoader} width={300} height={200} src={image ? image : heroimg} alt='dj flash' />
+                <Image className='w-full h-[230px]'  width={300} height={200} src={image ? image : heroimg} alt='dj flash' />
             </CardHeader>
             <CardContent>
                 <CardTitle>
@@ -53,7 +66,7 @@ export default function CardEvent({ id, name, description, date, location, stand
             </CardContent>
             <CardFooter className=' flex justify-between'>
                 <Button>Buy Now</Button>
-                <Typography as={Link} variant='large' href={`/event/${id}`}>Read More</Typography>
+                <Typography as={Link} variant='large' href={`/event/${slug}`}>Read More</Typography>
             </CardFooter>
         </Card>
     );

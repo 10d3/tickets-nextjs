@@ -1,3 +1,4 @@
+import { DeleteJobButton } from '@/components/home/DeleteEvButton';
 import { Layout, LayoutContent, LayoutHeader, LayoutTitle } from '@/components/layout/layout';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -59,7 +60,7 @@ export default async function AdminEvent() {
                                             <Typography as={Link} variant='large' href={`/admin/event-created/${event.id}`}>{event.name}</Typography>
                                         </TableCell>
                                         <TableCell className='flex flex-row gap-4'>
-                                            <Button size='sm' variant='destructive'><Trash2 size={15} /></Button>
+                                            <DeleteJobButton jobId={event.id}/>
                                         </TableCell>
                                     </TableRow>
                                 ))}

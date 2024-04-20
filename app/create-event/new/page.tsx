@@ -5,7 +5,6 @@ import { getRequireAuthSession } from '@/lib/auth';
 export default async function page() {
   const session = await getRequireAuthSession();
   const user = session?.user.id
-  console.log(user)
 
   if(!user){return <h1>Log In</h1>}
   return <NewEventForm userId = {user} />

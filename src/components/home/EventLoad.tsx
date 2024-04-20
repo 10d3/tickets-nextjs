@@ -23,7 +23,7 @@ import EventFilterSidebar from './EventFilterSidebar';
 //     events: Event[];
 // }
 
-export default async function EventLoad({ title }: string) {
+export default async function EventLoad({ title }: {title:string}) {
 
     console.log(title)
 
@@ -41,13 +41,13 @@ export default async function EventLoad({ title }: string) {
     }
 
     return (
-        <section>
+        <section className='mb-8'>
             <div className=' mb-4 flex items-center justify-center'>
                 <h1 className='text-4xl' >{title}</h1>
             </div>
             <EventFilterSidebar />
             <div className='flex flex-col mt-6 justify-center items-center gap-6'>
-                <div className='flex flex-col md:flex-row gap-4'>
+                <div className='flex flex-col md:flex-wrap md:flex-row gap-4'>
                     {events.events?.map((event) => (
                         <CardEvent key={event.id} {...event} />
                     ))}

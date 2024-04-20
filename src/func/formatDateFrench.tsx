@@ -1,4 +1,4 @@
-export function convertUnixTimestamp(date) {
+export function convertUnixTimestamp(date:Date) {
   const dateIN = new Date(date);
   const months = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
   const monthName = months[dateIN.getMonth()];

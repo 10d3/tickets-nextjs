@@ -4,7 +4,7 @@ export const getEvent = async ( eventId:string) =>{
 
     const events = await prisma.event.findUnique({
         where: {
-            id: eventId
+            slug: eventId
         },
         select:{
             id: true,

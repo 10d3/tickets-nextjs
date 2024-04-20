@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -49,6 +50,7 @@ model User {
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  superAdmin    Boolean   @default(false)
   accounts      Account[]
   sessions      Session[]
   tickets       Ticket[]  @relation("UserTickets")
@@ -70,7 +72,7 @@ model Event {
   tickets                Ticket[]
   createdBy              User     @relation("UserEvents", fields: [createdById], references: [id])
   createdById            String
-  approved               Boolean @default(false)
+  approved               Boolean  @default(false)
 }
 
 model Ticket {

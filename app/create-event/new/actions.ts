@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import path from "path";
 import { getRequireAuthSession } from "@/lib/auth";
 
-export async function createEventPosting(formData: FormData, user1, data) {
+export async function createEventPosting(formData: FormData, user1:string, data:Date) {
   // const session = await getRequireAuthSession();
   // const user = session?.user.id
 

@@ -1,3 +1,4 @@
+'use client'
 import AccordionDemo from '@/components/home/AccordionDemo';
 import { Button } from '@/components/ui/button';
 import { Typography } from '@/components/ui/typography';
@@ -7,17 +8,17 @@ import Link from 'next/link';
 import React from 'react'
 import NewEventForm from './new/NewEventForm';
 
-export default async function CreateEvent() {
+export default function CreateEvent() {
 
     const intro = 'Creer votre billettrie en ligne en quelques clics'
     const intro2 = 'Billettrie & Inscription'
     const intro3 = 'Créez votre billetterie en ligne personnalisée, gérez simplement vos inscriptions, gagnez du temps et offrez une expérience mémorable à vos participants!'
 
-    const session = await getAuthSession();
+    // const session = await getAuthSession();
 
-    if (!session) {
-        throw new Error("no session found");
-    }
+    // if (!session) {
+    //     throw new Error("no session found");
+    // }
 
 
     return (
