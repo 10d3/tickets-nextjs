@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 import CardEvent from "@/components/home/CardEvent";
 import { prisma } from "@/db/prisma";
 import { getRequireAuthSession } from "@/lib/auth";

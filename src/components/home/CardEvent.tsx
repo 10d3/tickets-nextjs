@@ -1,3 +1,5 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
+/* eslint-disable tailwindcss/classnames-order */
 'use client'
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
@@ -20,7 +22,7 @@ interface CardEventProps {
     image: string | null; // Allow null for image
     standardTicketCapacity: number;
     createdById: string;
-  }
+}
 
 export default function CardEvent({ id, slug, name, description, date, location, standardTicketPrice, image, standardTicketCapacity, createdById }: CardEventProps) {
 
@@ -44,7 +46,7 @@ export default function CardEvent({ id, slug, name, description, date, location,
     return (
         <Card className='w-[350px] h-[450px]'>
             <CardHeader>
-                <Image className='w-full h-[230px]'  width={300} height={200} src={image ? image : heroimg} alt='dj flash' />
+                <Image className='w-full h-[230px] rounded-md' width={300} height={200} src={image ? image : heroimg} alt='dj flash' />
             </CardHeader>
             <CardContent>
                 <CardTitle>

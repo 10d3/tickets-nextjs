@@ -14,8 +14,10 @@ export const getEvent = async ( eventId:string, userId:string) =>{
             date: true,
             location:true,
             image : true,
-            price: true,
-            capacity: true,
+            standardTicketPrice: true,
+            standardTicketCapacity: true,
+            vipTicketCapacity: true,
+            vipTicketPrice: true,
             _count:{
                 select:{
                     tickets: true,

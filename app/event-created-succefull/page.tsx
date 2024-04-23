@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 'use client'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'

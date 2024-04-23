@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 import { Layout, LayoutContent, LayoutHeader, LayoutTitle } from '@/components/layout/layout';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,6 +12,7 @@ import Link from 'next/link';
 import React from 'react'
 import { getEvent } from './event.query';
 import { Button } from '@/components/ui/button';
+
 
 export default async function ListEvent({ params }: { params: { eventId: string } }) {
 

@@ -8,15 +8,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "@/components/ui/input"
 import LoadingButton from "@/components/ui/LoadingButton"
 import { createEventPosting } from "./actions"
+import SelectCustom from "@/components/ui/selectCustom"
+import { eventTypes } from "@/lib/event-type"
 
 
 type MyObject = {
     userId: string;
     // Add more properties as needed
-  };
+};
 
 
-export default function NewEventForm(userId:MyObject) {
+export default function NewEventForm(userId: MyObject) {
 
     const user1 = userId.userId
 
@@ -38,13 +40,13 @@ export default function NewEventForm(userId:MyObject) {
 
     async function onSubmit(values: EventValues) {
 
-        console.log(JSON.stringify(values.date))
+        console.log(JSON.stringify(values))
         const data = new Date(values.date)
         console.log(data.toISOString())
 
         const formData = new FormData();
-        Object.entries(values).forEach(([key, value])=>{
-            if(value){
+        Object.entries(values).forEach(([key, value]) => {
+            if (value) {
                 formData.append(key, value);
             }
         })
@@ -95,6 +97,24 @@ export default function NewEventForm(userId:MyObject) {
                                         <FormLabel>Event Description </FormLabel>
                                         <FormControl>
                                             <Input placeholder="Provide a description for your event" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={control}
+                                name="eventType"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Type Event</FormLabel>
+                                        <FormControl>
+                                            <SelectCustom {...field} defaultValue=''>
+                                                <option value='' hidden>Select event type</option>
+                                                {eventTypes.map(eventTyp => (
+                                                    <option key={eventTyp} value={eventTyp}>{eventTyp}</option>
+                                                ))}
+                                            </SelectCustom>
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

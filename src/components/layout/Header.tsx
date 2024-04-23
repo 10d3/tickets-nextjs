@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 
 // src/components/layout/Header.
 import { SiteConfig } from '@/lib/site-config';
@@ -8,7 +9,8 @@ import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerTitle, DrawerTrigger } from '../ui/drawer';
-import { AuthButton } from '@/features/auth/authButton';
+import {AuthButton} from '@/features/auth/AuthButton'; // Update the import statement to match the actual file name
+
 
 export function Header() {
 
@@ -21,6 +23,7 @@ export function Header() {
 
 
     return (
+        // eslint-disable-next-line tailwindcss/classnames-order
         <header className="bg-background sticky top-0 z-40 w-full border-b">
             <div className="container flex h-16 items-center justify-between space-x-4 sm:justify-between sm:space-x-0">
                 <div className="flex gap-2 items-center ">

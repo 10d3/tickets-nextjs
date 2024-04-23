@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { getAuthSession, getRequireAuthSession } from '@/lib/auth'
@@ -18,7 +19,7 @@ export default async function AccountPage() {
         select:{superAdmin:true}
     })
 
-    const isSuperAdmin:boolean = userPri?.superAdmin
+    const isSuperAdmin:boolean | undefined = userPri?.superAdmin
 
     const events = await prisma.event.findMany({
         where: {

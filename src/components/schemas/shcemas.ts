@@ -1,3 +1,4 @@
+import { eventTypes } from "@/lib/event-type";
 import { z } from "zod";
 
 // Schéma Zod pour les données d'événement
@@ -18,6 +19,7 @@ export const EventSchema = z.object({
   name: z.string().min(1, "required").max(255), // Nom de l'événement
   // slug: z.string().min(1),
   description: z.string().min(1).max(2000), // Description de l'événement
+  eventType: z.string().min(1).refine((value) => eventTypes.includes(value), "Invalid event type"),
   date: z.string().transform((value) => new Date(value)),
   //  z
   //   .string()
@@ -35,3 +37,11 @@ export const EventSchema = z.object({
 });
 
 export type EventValues = z.infer<typeof EventSchema>;
+
+export const eventFilterSchema = z.object({
+  q: z.string().optional(),
+  eventtype: z.string().optional(),
+  location: z.string().optional(),
+});
+
+export type eventFilterValues = z.infer<typeof eventFilterSchema>;

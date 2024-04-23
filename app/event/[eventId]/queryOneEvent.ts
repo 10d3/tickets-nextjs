@@ -10,6 +10,7 @@ export const getEvent = async ( eventId:string) =>{
             id: true,
             name : true,
             description : true,
+            // eventType: true,
             date: true,
             location:true,
             image : true,

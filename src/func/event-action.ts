@@ -14,7 +14,7 @@ export async function deleteEventAction(
   ): Promise<FormState> {
     try {
       const eventId = formData.get("jobId") as string;
-
+      console.log(formData)
 
       const event = await prisma.event.findUnique({
         where: {
@@ -41,3 +41,30 @@ export async function deleteEventAction(
 
     redirect("/admin/event-created");
   }
+
+  export async function approveSubmission(
+    prevState: FormState,
+    formData: FormData
+  ): Promise<FormState> {
+  try {
+    const eventId = formData.get("jobId") as string;
+
+    await prisma.event.update({
+      where: {
+        id: eventId,
+      },
+      data: {
+        approved: true,
+      },
+    });
+
+    revalidatePath("/");
+  } catch (error) {
+    let message = "Unexpected error";
+    if (error instanceof Error) {
+      message = error.message;
+    }
+    return { error: message };
+  }
+  redirect('/superAdmin')
+}

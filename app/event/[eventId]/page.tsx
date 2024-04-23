@@ -1,3 +1,6 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
+/* eslint-disable tailwindcss/no-unnecessary-arbitrary-value */
+/* eslint-disable tailwindcss/classnames-order */
 
 import React from 'react'
 import { getEvent } from './queryOneEvent'
@@ -8,11 +11,30 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import generateTicketsForEvent from '@/func/ticketsGenerator';
 
+
+type Event = {
+  id?: string;
+  name?: string;
+  description?: string;
+  date?: Date;
+  location?: string;
+  image?: string | null;
+  standardTicketPrice?: number;
+  standardTicketCapacity?: number;
+  vipTicketCapacity?: number | null; // Updated to allow null
+  vipTicketPrice?: number;
+  _count?: {
+      select: {
+          tickets: number;
+      };
+  };
+};
+
 export default async function page({params}:{params:{eventId: string}}) {
 
-  const events = await getEvent(params.eventId);
+  const events:Event = await getEvent(params.eventId);
 
-  // const gene = generateTicketsForEvent(events.id)
+  const gene = generateTicketsForEvent(events.id)
 
   // console.log(gene)
 

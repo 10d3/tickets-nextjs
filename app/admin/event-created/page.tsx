@@ -23,6 +23,8 @@ export default async function AdminEvent() {
             createdById: session.user.id
         }
     })
+
+    console.log(events)
     return (
         <Layout>
             <LayoutHeader>
@@ -47,6 +49,7 @@ export default async function AdminEvent() {
                             </TableHeader> */}
                             <TableBody>
                                 {events.map(event => (
+                                    // eslint-disable-next-line tailwindcss/classnames-order
                                     <TableRow className='flex flex-row justify-between items-center' key={event.id}>
                                         <TableCell>
                                             <Avatar className='rounded'>

@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"

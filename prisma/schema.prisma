@@ -51,6 +51,7 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   superAdmin    Boolean   @default(false)
+  isVerify      Boolean   @default(false)
   accounts      Account[]
   sessions      Session[]
   tickets       Ticket[]  @relation("UserTickets")
@@ -62,6 +63,7 @@ model Event {
   name                   String   @unique
   slug                   String   @unique
   description            String
+  eventType              String
   date                   DateTime
   location               String
   image                  String?
@@ -78,6 +80,8 @@ model Event {
 model Ticket {
   id         String   @id @default(cuid())
   eventId    String
+  eventName  String
+  eventImage String
   userId     String?
   price      Float
   status     String   @default("available")

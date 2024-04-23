@@ -15,11 +15,11 @@ export async function createEventPosting(formData: FormData, user1:string, data:
   console.log(user1);
 
   const values = Object.fromEntries(formData.entries());
-  console.log(data.toISOString());
 
   const {
     name,
     description,
+    eventType,
     location,
     image,
     vipTicketPrice,
@@ -50,6 +50,7 @@ export async function createEventPosting(formData: FormData, user1:string, data:
       name: name.trim(),
       slug,
       description: description.trim(),
+      eventType,
       date: data.toISOString(),
       location,
       image: eventFlyerUrl,

@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 import { SiteConfig } from "@/lib/site-config"
 import { Typography } from "../ui/typography"
 import Link from "next/link"
