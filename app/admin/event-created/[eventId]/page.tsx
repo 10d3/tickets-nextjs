@@ -12,6 +12,9 @@ import Link from 'next/link';
 import React from 'react'
 import { getEvent } from './event.query';
 import { Button } from '@/components/ui/button';
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
+import EditEventForm from '../../../create-event/new/EditingEventForm';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 
 export default async function ListEvent({ params }: { params: { eventId: string } }) {
@@ -24,7 +27,7 @@ export default async function ListEvent({ params }: { params: { eventId: string 
 
 
     return (
-        <div className='flex flex-col md:flex-row justify-center items-center'>
+        <div className='flex flex-col md:flex-row justify-center items-center gap-4'>
             <div>
                 <Layout>
                     <LayoutHeader>
@@ -66,7 +69,6 @@ export default async function ListEvent({ params }: { params: { eventId: string 
                                                 <Typography>{events.description}</Typography>
                                             </TableCell>
                                         </TableRow>
-
                                     </TableBody>
                                 </Table>
                             </CardContent>
@@ -76,7 +78,14 @@ export default async function ListEvent({ params }: { params: { eventId: string 
             </div>
             <div>
                 <Card>
-                    <Button>Edit Events</Button>
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Button variant='outline'>Edit Event</Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                            <EditEventForm events={events} />
+                        </DialogContent>
+                    </Dialog>
                 </Card>
             </div>
         </div>

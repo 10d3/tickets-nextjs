@@ -45,3 +45,19 @@ export const eventFilterSchema = z.object({
 });
 
 export type eventFilterValues = z.infer<typeof eventFilterSchema>;
+
+
+export const editingSchema = z.object({
+  name: z.string().min(1, "required").max(255),
+  description: z.string().min(1).max(2000),
+  eventType: z.string().min(1).refine((value) => eventTypes.includes(value), "Invalid event type"),
+  date: z.string().transform((value) => new Date(value)),
+  location: z.string().min(1), // Lieu de l'événement
+  image: imageFlyer.optional(), // Flyer de l'evenement
+  vipTicketPrice: z.number().min(0).optional(),
+  standardTicketPrice: z.number().min(0).optional(),
+  vipTicketCapacity: z.number().min(0).optional(),
+  standardTicketCapacity: z.number().min(0),
+})
+
+export type eventFilterEditingValues = z.infer<typeof editingSchema>;

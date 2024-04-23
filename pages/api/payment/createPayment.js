@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
   try {
 
-    var payment_creator = Moncash.payment;
+    const payment_creator = Moncash.payment;
     payment_creator.create(create_payment_json, function (error, payment) {
       if (error) {
         console.log(error);
