@@ -37,7 +37,7 @@ export const Footer = () => {
                         {SiteConfig.title}
                     </Typography>
                 </div>
-                <div className="flex flex-col">
+                {/* <div className="flex flex-col">
                     <h2 className=" text-xl md:text-2xl">About {SiteConfig.title}</h2>
                     <div className='flex flex-col items-center gap-2'>
                         {links.map((link, i) => {
@@ -46,7 +46,7 @@ export const Footer = () => {
                             );
                         })}
                     </div>
-                </div>
+                </div> */}
                 <div className="flex flex-col gap-2">
                     <h2 className="text-xl md:text-2xl">Get in touch</h2>
                     <div className="flex flex-row gap-4">

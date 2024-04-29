@@ -56,7 +56,7 @@ export default async function AccountPage() {
                 <Link href='/account/setting' className={buttonVariants({ variant: "outline", size: "lg" })}>Setting</Link>
                 <Link href='/admin' className={buttonVariants({ variant: "outline", size: 'lg' })}>Admin</Link>
                 {isSuperAdmin != false && <Link href='/superAdmin' className={buttonVariants({ variant: "outline", size: 'lg' })}>Super Admin</Link>}
-                {events.length != 0 && <Link href='/dashboard' className={buttonVariants({ variant: "outline", size: 'lg' })}>DashBoard</Link>}
+                { <Link href='/dashboard' className={buttonVariants({ variant: "outline", size: 'lg' })}>DashBoard</Link>}
                 {tickets.length != 0 && <Link href='/tickets' className={buttonVariants({ variant: "outline", size: 'lg' })}>Mes Tickets</Link>}
             </CardContent>
             <CardFooter className='flex flex-row-reverse'>

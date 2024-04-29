@@ -1,31 +1,33 @@
+/* eslint-disable tailwindcss/classnames-order */
 'use client'
 import React from 'react'
 import { Typography } from '../ui/typography';
 import Link from 'next/link';
 import { SiteConfig } from '@/lib/site-config';
 import { Drawer, DrawerClose, DrawerContent, DrawerTitle, DrawerTrigger } from '../ui/drawer';
-import { Home, Menu, Package, ShoppingCart, Users2, X } from 'lucide-react';
+import { Home, LayoutDashboard, Menu, Package, Package2, ShoppingCart, Users2, X } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import { Button } from '../ui/button';
 import { usePathname } from 'next/navigation';
+import { LogoutButton } from '@/features/auth/LogoutButton';
 
 export default function SideBar() {
 
     const pathname = usePathname()
 
     const links = [
-        { name: "Dashboard", href: "/dashboard", icon: <Home /> },
-        { name: "Orders", href: "/dashboard/users", icon: <ShoppingCart /> },
-        { name: 'Event', href: '/create-event', icon: <Package /> },
-        { name: "Users", href: "/dashboard/users", icon: <Users2 /> },
+        { name: "Dashboard", href: "/dashboard", icon: <LayoutDashboard size={16} /> },
+        { name: "Orders", href: "/dashboard/orders", icon: <ShoppingCart size={16} /> },
+        { name: 'Event', href: '/create-event', icon: <Package size={16} /> },
+        { name: "Users", href: "/dashboard/users", icon: <Users2 size={16} /> },
     ];
     return (
-        <aside className="absolute md:w-[10%] md:flex h-[80%]">
+        <aside className="absolute md:w-[10%] md:flex h-4/5">
 
             <div className=' hidden md:flex flex-col justify-between'>
-                <div>
+                {/* <div>
                     <h1>Logo</h1>
-                </div>
+                </div> */}
                 {/* menu pc */}
 
                 <div className=' hidden md:flex flex-col gap-2 items-center '>
@@ -41,8 +43,8 @@ export default function SideBar() {
                     })}
                 </div>
                 <div>
-                <h1>logout</h1>
-            </div>
+                    <LogoutButton />
+                </div>
             </div>
 
 
@@ -52,7 +54,7 @@ export default function SideBar() {
             <div className='absolute md:hidden'>
                 <Drawer direction='left'>
                     <DrawerTrigger>
-                        <Menu />
+                        <Package2 />
                     </DrawerTrigger>
                     <DrawerContent>
                         <div className='flex flex-col h-[85%] w-full justify-between'>
@@ -67,10 +69,20 @@ export default function SideBar() {
                                 {links.map((link, i) => {
                                     return (
                                         <DrawerClose key={i} asChild>
-                                            <Typography className='' as={Link} key={i} href={link.href}>{link.name}</Typography>
+                                            <Tooltip>
+                                                <TooltipTrigger asChild>
+                                                    <Typography className='' as={Link} key={i} href={link.href}><Button variant={link.href === pathname ? "default" : "ghost"}>{link.icon}</Button><span className="sr-only">{link.name}</span></Typography>
+                                                </TooltipTrigger>
+                                                <TooltipContent side="right">{link.name}</TooltipContent>
+                                            </Tooltip>
                                         </DrawerClose>
                                     );
                                 })}
+                            </div>
+                            <div className='flex flex-col w-full items-center'>
+                                <div className='flex flex-col gap-4 p-3 items-center'>
+                                    <LogoutButton />
+                                </div>
                             </div>
                         </div>
                     </DrawerContent>
