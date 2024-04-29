@@ -80,6 +80,8 @@ export async function editEventPosting(
 
   const values = Object.fromEntries(formData.entries());
 
+  console.log(values)
+
   const {
     name,
     description,

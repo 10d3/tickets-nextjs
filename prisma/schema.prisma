@@ -79,6 +79,7 @@ model Event {
 
 model Ticket {
   id         String   @id @default(cuid())
+  ticketId   String   @unique
   eventId    String
   eventName  String
   eventImage String

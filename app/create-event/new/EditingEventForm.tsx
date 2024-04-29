@@ -3,7 +3,7 @@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Typography } from "@/components/ui/typography";
 import { useForm } from "react-hook-form";
-import { EventSchema, EventValues } from "../../../src/components/schemas/shcemas";
+import { EventSchema, EventValues, editingSchema, eventFilterEditingValues } from "../../../src/components/schemas/shcemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import LoadingButton from "@/components/ui/LoadingButton";
@@ -12,16 +12,30 @@ import { eventTypes } from "@/lib/event-type";
 import { createEventPosting, editEventPosting } from "./actions";
 
 type EditEventFormProps = {
-    event: EventValues; // Pass the event object to the form
-    onSubmit: (values: EventValues) => void; // Function to handle form submission
+    event: eventFilterEditingValues; // Pass the event object to the form
+    onSubmit: (values: eventFilterEditingValues) => void; // Function to handle form submission
 };
 
 export default function EditEventForm({ events }: EditEventFormProps) {
     console.log(events)
+    const eventTest = {
+        id: events.id,
+        name: events.name,
+        description: events.description,
+        eventType: events.eventType,
+        date : events.date.toISOString(),
+        location: events.location,
+        image: events.image,
+        standardTicketPrice: events.standardTicketPrice.toString(),
+        standardTicketCapacity: events.standardTicketCapacity.toString(),
+        vipTicketPrice: events.vipTicketPrice === null ? "" : events.vipTicketPice,
+        vipTicketCapacity: events.vipTicketCapacity === null ? "" : events.vipTicketCapacity,
+    }
+    console.log(eventTest)
     const eventID = events.id
-    const form = useForm<EventValues>({
+    const form = useForm<eventFilterEditingValues>({
         defaultValues: events, // Populate form fields with the existing event data
-        resolver: zodResolver(EventSchema)
+        resolver: zodResolver(editingSchema)
     });
 
     const {

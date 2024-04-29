@@ -12,7 +12,6 @@ import Link from 'next/link';
 import React from 'react'
 import { getEvent } from './event.query';
 import { Button } from '@/components/ui/button';
-import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 import EditEventForm from '../../../create-event/new/EditingEventForm';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 

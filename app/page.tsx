@@ -2,8 +2,7 @@ import EventLoad from "@/components/home/EventLoad";
 import Hero from "@/components/home/Hero";
 import CreateYourOwn from "@/components/home/createYourOwn";
 import { eventFilterValues } from "@/components/schemas/shcemas";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+
 
 interface PageProps {
   searchParams: {
