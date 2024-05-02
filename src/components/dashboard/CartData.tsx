@@ -4,7 +4,7 @@ import { Card, CardContent } from '../ui/card'
 
 export default function CartData({ title, body, footer, icon }: { title: string, body: string, footer: string, }) {
     return (
-        <Card className='w-[350px]'>
+        <Card className='w-full md:w-1/3'>
             <CardContent>
                 <section className="flex mt-2 items-center justify-between gap-2">
                     {/* label */}

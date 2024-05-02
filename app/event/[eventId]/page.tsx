@@ -4,14 +4,12 @@
 
 import React from 'react'
 import { getEvent } from './queryOneEvent'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Typography } from '@/components/ui/typography';
+import { Typography } from '../../../src/components/ui/typography'
 import { BadgeDollarSign, Calendar, Divide, Map, PersonStanding } from 'lucide-react';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import generateTicketsForEvent, { generateVIPTicketsForEvent } from '@/func/ticketsGenerator';
-import { convertUnixTimestamp } from '@/func/formatDateFrench';
-
+import { convertUnixTimestamp } from '../../../src/func/formatDateFrench';
+import DialogBuy from '../../../src/components/home/DialogBuy';
 
 type Event = {
   id?: string;
@@ -29,10 +27,36 @@ type Event = {
   } | undefined;
 };
 
+interface dataType{
+  name:string,
+  buto1: string,
+  buto2: string,
+}
+
 export default async function page({ params }: { params: { eventId: string } }) {
+
 
   const events: Event = await getEvent(params.eventId);
   const date = events.date ? events.date : new Date;
+
+  console.log(typeof events.vipTicketPrice)
+
+  const data = events.vipTicketPrice === 0 ? [
+    {
+      name: 'Buy Standard ticket now',
+      buto2: 'Buy with CB',
+      buto1: 'Buy with Moncah',
+    },
+  ] : [{
+    name: 'Buy Standard ticket now',
+    buto1: 'Buy ticket with Moncah',
+    buto2: 'Buy ticket with CB',
+  },
+  {
+    name: 'Buy VIP ticket now',
+    buto2: 'Buy VIP ticket with CB',
+    buto1: 'Buy VIP ticket with Moncah',
+  },]
 
   const { dateFormat, time } = convertUnixTimestamp(date)
 
@@ -42,9 +66,9 @@ export default async function page({ params }: { params: { eventId: string } }) 
     date.setHours(parseInt(hours, 10));
     date.setMinutes(parseInt(minutes, 10));
     return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-}
+  }
 
-const time12HourFormat = convertTo12HourFormat(time);
+  const time12HourFormat = convertTo12HourFormat(time);
 
 
   const image = events.image ? events.image : '';
@@ -59,7 +83,7 @@ const time12HourFormat = convertTo12HourFormat(time);
   return (
     <section className='relative w-full flex h-auto flex-col md:flex-row items-center justify-between md:pt-14 md:pr-24 md;pl-24 '>
       <div className='h-[50%] w-[100vw] md:w-[50%] md:h-full'>
-        <Image src={image} width={0} height={0} sizes='100%' className='w-full h-full' alt={name} />
+        <Image src={image} priority width={0} height={0} sizes='100%' className='w-full h-full' alt={name} />
       </div>
       <div className='h-[50%] md:w-[50%] md:h-full w-full flex flex-col gap-4 p-10 md:pl-24 md:pr-24 md:justify-between'>
         <h1 className='text-4xl font-bold'>{events.name}</h1>
@@ -103,8 +127,11 @@ const time12HourFormat = convertTo12HourFormat(time);
           maps
         </div>
         <div className='w-full mt-6 flex items-center justify-center gap-2'>
-          <Button size='lg' className='w-[50%]' variant="default">Buy Now</Button>
-          <Button size='lg' className='w-[50%]' variant="default">Buy VIP Now</Button>
+          {data.map((dat, i) => (
+            <DialogBuy key={i} data={dat} />
+          ))}
+          {/* <Button size='lg' className='w-[50%]' variant="default">Buy Standard Now</Button> */}
+          {/* <Button size='lg' className='w-[50%]' variant="default">Buy VIP Now</Button> */}
         </div>
       </div>
     </section>

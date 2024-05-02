@@ -5,7 +5,7 @@ import { Typography } from '../ui/typography';
 import Link from 'next/link';
 import { SiteConfig } from '@/lib/site-config';
 import { Drawer, DrawerClose, DrawerContent, DrawerTitle, DrawerTrigger } from '../ui/drawer';
-import { Home, LayoutDashboard, Menu, Package, Package2, ShoppingCart, Users2, X } from 'lucide-react';
+import { LayoutDashboard, Package, Package2, ShoppingCart, Users2, X } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import { Button } from '../ui/button';
 import { usePathname } from 'next/navigation';
@@ -33,9 +33,16 @@ export default function SideBar() {
                 <div className=' hidden md:flex flex-col gap-2 items-center '>
                     {links.map((link, i) => {
                         return (
-                            <Tooltip>
+                            <Tooltip >
                                 <TooltipTrigger asChild>
-                                    <Typography className='' as={Link} key={i} href={link.href}><Button variant={link.href === pathname ? "default" : "ghost"}>{link.icon}</Button><span className="sr-only">{link.name}</span></Typography>
+                                    <Typography className='' as={Link} key={i} href={link.href}>
+                                        <Button variant={link.href === pathname ? "default" : "ghost"}>
+                                            {link.icon}
+                                        </Button>
+                                        <span className="sr-only">
+                                            {link.name}
+                                        </span>
+                                    </Typography>
                                 </TooltipTrigger>
                                 <TooltipContent side="right">{link.name}</TooltipContent>
                             </Tooltip>

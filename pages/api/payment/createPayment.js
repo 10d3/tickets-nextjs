@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { env } from "process";
 
 const Moncash = require("nodejs-moncash-sdk");

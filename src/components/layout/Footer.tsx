@@ -48,7 +48,7 @@ export const Footer = () => {
                     </div>
                 </div> */}
                 <div className="flex flex-col gap-2">
-                    <h2 className="text-xl md:text-2xl">Get in touch</h2>
+                    {/* <h2 className="text-xl md:text-2xl">Get in touch</h2> */}
                     <div className="flex flex-row gap-4">
                         {socials.map((social, i) => {
                             return (

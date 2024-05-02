@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 // app/layout.
 import { SiteConfig } from '@/lib/site-config';
 import { cn } from '@/lib/utils';

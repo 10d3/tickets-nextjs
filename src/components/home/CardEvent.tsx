@@ -44,9 +44,11 @@ export default function CardEvent({ id, slug, name, description, date, location,
 
 
     return (
-        <Card className='w-[350px] h-[450px]'>
+        <Card className='w-[350px] h-auto'>
             <CardHeader>
-                <Image className='w-full h-[230px] rounded-md' width={300} height={200} src={image ? image : heroimg} alt='dj flash' />
+                <div className='w-[300px] m-auto'>
+                <Image className='w-full h-[330px] rounded-md' width={500} height={500} src={image ? image : heroimg} alt='dj flash' />
+                </div>
             </CardHeader>
             <CardContent>
                 <CardTitle>
