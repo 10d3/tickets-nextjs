@@ -1,11 +1,11 @@
-// src/componen/theme/ThemeProvider.tsx
-"use client"
+// // src/components/theme/ThemeProvider.tsx
 
-// import * as React from "react"
-import { ThemeProvider as  NextThemesProvider } from "next-themes"
-// import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { type ThemeProviderProps } from "next-themes/dist/types"
+// // Import React and ThemeProvider from "next-themes"
+// import * as React from "react";
+// import { ThemeProvider as NextThemesProvider } from "next-themes";
+// import { ThemeProviderProps } from "next-themes/dist/types";
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
-}
+// // Define your ThemeProvider component
+// export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+//   return <NextThemesProvider {...props}> {children} </NextThemesProvider>;
+// }
