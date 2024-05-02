@@ -7,7 +7,7 @@ import { ThemeToggle } from '../theme/Toggletheme';
 import { Typography } from '../ui/typography';
 import { Menu, X } from 'lucide-react';
 import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerTitle, DrawerTrigger } from '../ui/drawer';
-import { AuthButton } from '@/features/auth/AuthButton';
+import { AuthButton } from '@/features/Authbutton';
 // import {AuthButton} from '../../features/auth/Authbutton'; // Update the import statement to match the actual file name
 
 
