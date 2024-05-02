@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 'use client'
 import AccordionDemo from '@/components/home/AccordionDemo';
 import { Button } from '@/components/ui/button';
@@ -22,7 +23,7 @@ export default function CreateEvent() {
 
 
     return (
-        <div className=' flex flex-col items-center pl-7 pr-7 pt-10 md:p-24 gap-8'>
+        <div className=' flex flex-col items-center px-7 pt-10 md:p-24 gap-8'>
             <div className='flex flex-col md:flex-row gap-6'>
                 <div className='flex flex-col gap-4 md:gap-0 justify-between '>
                     <Typography as='h1' className=' text-4xl md:text-6xl '>{intro}</Typography>
@@ -31,15 +32,15 @@ export default function CreateEvent() {
                     <Button size='lg' className=' self-start md:self-center' variant='default'><Typography href='/create-event/new' as={Link}>Create Event</Typography></Button>
                 </div>
                 <div>
-                    <Image src='/heroimg.jpg' width={0} height={0} sizes='100%' className='w-full h-full rounded-lg' alt='create your event' />
+                    <Image src='/heroimg.jpg' width={0} height={0} sizes='100%' className='size-full rounded-lg' alt='create your event' />
                 </div>
             </div>
             <div className=' w-full flex flex-col md:flex-row'>
-                <div className='w-full flex flex-col md;w-[50%] gap-2'>
+                <div className='w-full flex flex-col md;w-1/2 gap-2'>
                     <Typography as='h1' className='text-2xl md:text-4xl'>La solution de billetterie à portée de tous.</Typography>
                     <Typography as='p' className='text-xl md:text-2xl text-justify'>Découvrez la plateforme de billetterie conçue pour simplifier votre expérience et celle de vos participants :</Typography>
                 </div>
-                <div className='w-full md:w-[50%]'>
+                <div className='w-full md:md:w-1/2'>
                     <AccordionDemo />
                 </div>
             </div>
