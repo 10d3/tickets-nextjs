@@ -10,6 +10,9 @@ import Image from 'next/image';
 import generateTicketsForEvent, { generateVIPTicketsForEvent } from '@/func/ticketsGenerator';
 import { convertUnixTimestamp } from '../../../src/func/formatDateFrench';
 import DialogBuy from '../../../src/components/home/DialogBuy';
+import { Button } from '@/components/ui/button';
+import { getAuthSession } from '@/lib/auth';
+import { prisma } from '@/db/prisma';
 
 type Event = {
   id?: string;
@@ -27,8 +30,8 @@ type Event = {
   } | undefined;
 };
 
-interface dataType{
-  name:string,
+interface dataType {
+  name: string,
   buto1: string,
   buto2: string,
 }
@@ -38,8 +41,22 @@ export default async function page({ params }: { params: { eventId: string } }) 
 
   const events: Event = await getEvent(params.eventId);
   const date = events.date ? events.date : new Date;
+  const session = await getAuthSession();
+  const userId = session?.user.id
+  console.log(userId)
 
-  console.log(typeof events.vipTicketPrice)
+  // console.log( await generateTicketsForEvent(events.id))
+
+  console.log(generateTicketsForEvent)
+
+  const tickets = await prisma.ticket.findMany({
+    where:{
+      eventId: events.id
+    }
+  })
+
+
+  console.log(tickets)
 
   const data = events.vipTicketPrice === 0 ? [
     {
@@ -128,8 +145,9 @@ export default async function page({ params }: { params: { eventId: string } }) 
         </div>
         <div className='w-full mt-6 flex items-center justify-center gap-2'>
           {data.map((dat, i) => (
-            <DialogBuy key={i} data={dat} />
+            <DialogBuy key={i} userId={userId} events={tickets} data={dat} />
           ))}
+
           {/* <Button size='lg' className='w-[50%]' variant="default">Buy Standard Now</Button> */}
           {/* <Button size='lg' className='w-[50%]' variant="default">Buy VIP Now</Button> */}
         </div>

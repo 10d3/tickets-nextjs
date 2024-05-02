@@ -6,9 +6,17 @@ generator client {
   previewFeatures = ["fullTextSearch"]
 }
 
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model Account {
@@ -43,25 +51,26 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  superAdmin    Boolean   @default(false)
-  isVerify      Boolean   @default(false)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  superAdmin    Boolean    @default(false)
+  isVerify      Boolean    @default(false)
   accounts      Account[]
   sessions      Session[]
-  tickets       Ticket[]  @relation("UserTickets")
-  events        Event[]   @relation("UserEvents")
+  tickets       Ticket[]   @relation("UserTickets")
+  events        Event[]    @relation("UserEvents")
+  Purchase      Purchase[]
 }
 
 model Event {
-  id                     String   @id @default(cuid())
-  name                   String   @unique
-  slug                   String   @unique
+  id                     String     @id @default(cuid())
+  name                   String     @unique
+  slug                   String     @unique
   description            String
   eventType              String
   date                   DateTime
@@ -72,9 +81,10 @@ model Event {
   vipTicketCapacity      Int? // Capacité du billet VIP
   standardTicketCapacity Int // Capacité du billet stand
   tickets                Ticket[]
-  createdBy              User     @relation("UserEvents", fields: [createdById], references: [id])
+  createdBy              User       @relation("UserEvents", fields: [createdById], references: [id])
   createdById            String
-  approved               Boolean  @default(false)
+  approved               Boolean    @default(false)
+  Purchase               Purchase[]
 }
 
 model Ticket {
@@ -90,6 +100,15 @@ model Ticket {
   createdAt  DateTime @default(now())
   event      Event    @relation(fields: [eventId], references: [id], onDelete: Cascade) // Définition de l'argument onDelete ici
   buyer      User?    @relation("UserTickets", fields: [userId], references: [id])
+}
+
+model Purchase {
+  id      String @id @default(cuid())
+  event   Event  @relation(fields: [eventId], references: [id])
+  eventId String
+  price   Float
+  buyer   User   @relation(fields: [buyerId], references: [id])
+  buyerId String
 }
 
 model VerificationToken {

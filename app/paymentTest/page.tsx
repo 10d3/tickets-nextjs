@@ -11,7 +11,7 @@ const PaymentButton = () => {
 
   const handlePayment = async () => {
     try {
-      const response = await fetch('/api/payment/createPayment', {
+      const response = await fetch('/api/payment/checkout_session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
