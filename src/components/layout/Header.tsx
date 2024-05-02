@@ -15,7 +15,7 @@ export function Header() {
     const links = [
         { name: "Home", href: "/" },
         { name: "Event", href: "/event" },
-        { name: 'Create event', href: '/create-event' },
+        { name: 'Create', href: '/create-event' },
         { name: "FAQ", href: "#" },
     ];
 
