@@ -44,7 +44,7 @@ export default function EditEventForm({ events }: EditEventFormProps) {
         formState: { isSubmitting }
     } = form;
 
-    const onSubmit = async (values,) => {
+    const onSubmit = async (values:any) => {
         const data = new Date(values.date);
         console.log(data.toISOString());
 

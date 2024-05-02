@@ -1,3 +1,5 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
+/* eslint-disable tailwindcss/classnames-order */
 import EventLoad from "@/components/home/EventLoad";
 import Hero from "@/components/home/Hero";
 import CreateYourOwn from "@/components/home/createYourOwn";

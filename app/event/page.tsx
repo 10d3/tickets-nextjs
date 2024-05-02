@@ -1,3 +1,5 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
+/* eslint-disable tailwindcss/classnames-order */
 import EventLoad from '@/components/home/EventLoad'
 import { Typography } from '@/components/ui/typography'
 import React from 'react'

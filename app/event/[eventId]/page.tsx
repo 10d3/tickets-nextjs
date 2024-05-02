@@ -42,7 +42,7 @@ export default async function page({ params }: { params: { eventId: string } }) 
   const events: Event = await getEvent(params.eventId);
   const date = events.date ? events.date : new Date;
   const session = await getAuthSession();
-  const userId = session?.user.id
+  const userId = session?.user.id as string;
   console.log(userId)
 
   // console.log( await generateTicketsForEvent(events.id))

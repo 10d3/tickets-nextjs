@@ -11,7 +11,7 @@ loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 const Checkout = ({ events, userId }: { events: any, userId: string }) => {
 
 
-  const availableTicket = events.find(ticket => ticket.status === 'available');
+  const availableTicket = events.find((event:any) => event.status === 'available');
   console.log(availableTicket)
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout

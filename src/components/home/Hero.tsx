@@ -1,3 +1,5 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
+/* eslint-disable tailwindcss/classnames-order */
 import * as React from "react"
 
 import { Card, CardContent } from "@/components/ui/card"

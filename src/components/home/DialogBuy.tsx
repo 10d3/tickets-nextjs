@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 'use client'
 import React from 'react'
 import {
@@ -36,7 +37,7 @@ export default function DialogBuy({ data, events, userId }: { data: dataType, ev
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button size='lg' className='w-[50%] bg-green-700' variant="default">{data.name}</Button>
+                <Button size='lg' className='w-1/2 bg-green-700' variant="default">{data.name}</Button>
             </DialogTrigger>
             <DialogContent className="max-w-[22rem] md:max-w-auto md:min-w-[350px]">
                 <DialogHeader>

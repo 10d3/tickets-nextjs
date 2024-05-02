@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 "use client"
 
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
@@ -28,7 +29,7 @@ export const LoggedIn = (props: LoggedInProps) => {
             <AlertDialog>
                 <DropdownMenuTrigger asChild>
                     <Button variant='outline' size='sm'>
-                        <Avatar className=" rounded-md h-6 w-6 mr-2">
+                        <Avatar className=" rounded-md size-6 mr-2">
                             <AvatarFallback>
                                 {props.user?.name?.[0]}
                             </AvatarFallback>
