@@ -15,6 +15,8 @@ export const getAuthSession = async (...parameters: ParametersGetServerSession) 
 export const getRequireAuthSession = async (...parameters: ParametersGetServerSession) => {
   const session = await getServerSession(...parameters, authOptions);
 
+  console.log(session)
+
   if(!session?.user?.id){
     throw new Error('Unauthorized')
   }

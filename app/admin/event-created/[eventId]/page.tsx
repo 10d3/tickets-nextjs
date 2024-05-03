@@ -24,6 +24,8 @@ export default async function ListEvent({ params }: { params: { eventId: string 
 
     console.log({ events })
 
+    const nameE:string = events.name ? events.name :""
+
 
     return (
         <div className='flex flex-col md:flex-row justify-center items-center gap-4'>
@@ -51,7 +53,7 @@ export default async function ListEvent({ params }: { params: { eventId: string 
                                             <TableCell>
                                                 <Avatar className='rounded'>
                                                     <AvatarFallback>
-                                                        {events.name[0]}
+                                                        {nameE[0]}
                                                     </AvatarFallback>
                                                     {/* {events.image && <AvatarImage src={events.image} alt={events.name} />} */}
                                                 </Avatar>

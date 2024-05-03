@@ -47,7 +47,7 @@ export default async function page({ params }: { params: { eventId: string } }) 
 
   // console.log( await generateTicketsForEvent(events.id))
 
-  console.log(generateTicketsForEvent)
+  // console.log( await generateTicketsForEvent(events.id))
 
   const tickets = await prisma.ticket.findMany({
     where:{
